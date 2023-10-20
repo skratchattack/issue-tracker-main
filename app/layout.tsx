@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import './theme-config.css'
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import NavBar from "./NavBar";
 
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
-        <Theme appearance="light" accentColor="violet">
+        <Theme accentColor="violet">      {/* I removed "appearence: 'light" */ }
           <NavBar />
           <main className="p-5">{children}</main>
         </Theme>
