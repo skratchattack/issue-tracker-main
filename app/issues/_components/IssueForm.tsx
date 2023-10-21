@@ -39,6 +39,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       if (issue) await axios.patch("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
       router.push("/issues");
+      router.refresh(); /* This command here took care of a bug - when I edited an issue, I could see the changes reflected when looking at the database, but the webpage was still displaying what it stored in the cache. So by refreshing this it fetched all data from the database and displayed the most recent data. */
     } catch (error) {
       setIsSubmitting(false);
       setError("An unexpected error occurred.");
