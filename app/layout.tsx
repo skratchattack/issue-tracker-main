@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import './theme-config.css'
-import { Theme } from "@radix-ui/themes";
+import "./theme-config.css";
+import { Container, Theme } from "@radix-ui/themes";
 import NavBar from "./NavBar";
-
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -18,9 +17,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
-        <Theme accentColor="violet">      {/* I removed "appearence: 'light" */ }
+        <Theme accentColor="violet">
+          {" "}
+          {/* I removed "appearence: 'light" */}
           <NavBar />
-          <main className="p-5">{children}</main>
+          <main className="p-5">
+            <Container>{children}</Container>
+          </main>
         </Theme>
       </body>
     </html>
