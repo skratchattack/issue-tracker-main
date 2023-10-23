@@ -20,11 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <AuthProvider>
           <Theme accentColor="violet">
-            {" "}
             {/* I removed "appearence: 'light" */}
             <NavBar />
-            <main className="p-5">
-              <Container>{children}</Container>
+            <main className="p-3">
+              <div>{children}</div>
             </main>
           </Theme>
         </AuthProvider>
