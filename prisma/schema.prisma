@@ -23,7 +23,6 @@ model Issue {
 }
 
 enum Status {
-  ALL
   OPEN
   IN_PROGRESS
   CLOSED
@@ -65,4 +64,12 @@ model User {
   accounts       Account[]
   sessions       Session[]
   assignedIssues Issue[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
