@@ -3,7 +3,7 @@ CREATE TABLE `Issue` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
-    `status` ENUM('ALL', 'OPEN', 'IN_PROGRESS', 'CLOSED') NOT NULL DEFAULT 'OPEN',
+    `status` ENUM('OPEN', 'IN_PROGRESS', 'CLOSED') NOT NULL DEFAULT 'OPEN',
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `assignedToUserId` VARCHAR(255) NULL,
@@ -51,4 +51,14 @@ CREATE TABLE `User` (
 
     UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `VerificationToken` (
+    `identifier` VARCHAR(191) NOT NULL,
+    `token` VARCHAR(191) NOT NULL,
+    `expires` DATETIME(3) NOT NULL,
+
+    UNIQUE INDEX `VerificationToken_token_key`(`token`),
+    UNIQUE INDEX `VerificationToken_identifier_token_key`(`identifier`, `token`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
